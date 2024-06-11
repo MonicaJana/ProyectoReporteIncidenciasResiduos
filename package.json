@@ -1,0 +1,26 @@
+{
+  "name": "proyecto",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch ./src/index.js",
+    "bdd": "json-server --watch base.json --port=4000",
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "![WhatsApp Image 2024-06-04 at 10 03 23 PM](https://github.com/Miguel2314carvajal/Recoleccion_Basura/assets/151950810/a37b37a8-cbbb-4763-819c-335cca4acb7e)",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cloudinary": "^2.2.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-fileupload": "^1.5.0",
+    "fs-extra": "^11.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "uuid": "^9.0.1"
+  }
+}
