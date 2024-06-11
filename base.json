@@ -41,6 +41,14 @@
       "nombre": "dd",
       "direccion": "dd",
       "correo": "dd"
+    },
+    {
+      "id": "492e55f2-28f9-4609-883e-23931cb5e9cc",
+      "username": "myjana",
+      "password": "$2b$10$W4yzQMDrlpJm4GAOrA2aIe2fqTFR08IbCfxKMmwcuWShwxhnzbnWG",
+      "names": "Monica Jaña",
+      "address": "caupicho",
+      "email": "monica.jana@epn.edu.ec"
     }
   ],
   "Reclamos": [
@@ -59,5 +67,69 @@
       "Fecha": "18/08/2024"
     }
   ],
-  "Horarios": []
+  "schedules": [
+    {
+      "id": "b46c1576-e0ba-46d7-8afc-46678e17a05e",
+      "address": "ofelia",
+      "schedule": "nocturno",
+      "frecuency": "martes-jueves-sabado",
+      "hours": "19H00-03H00"
+    },
+    {
+      "id": "b04af33b-2b5b-4515-97f3-435e123312fd",
+      "address": "la gasca",
+      "schedule": "nocturno",
+      "frecuency": "lunes-miercoles-viernes",
+      "hours": "19H00-03H00"
+    },
+    {
+      "id": "70d8c25d-b88a-4c1a-bf59-03c9e434875f",
+      "address": "la tola",
+      "schedule": "nocturno",
+      "frecuency": "martes-jueves-sabado",
+      "hours": "19H00-03H00"
+    },
+    {
+      "id": "67ffa50a-eb4e-4d08-b1f5-fa23affe3609",
+      "address": "mercado mayorista",
+      "schedule": "diurno",
+      "frecuency": "martes-jueves-sabado",
+      "hours": "03H00-11H00"
+    },
+    {
+      "id": "f193624e-83dd-43ad-9b24-01c524f59666",
+      "address": "villaflora",
+      "schedule": "diurno",
+      "frecuency": "martes-jueves-sabado",
+      "hours": "03H00-11H00"
+    },
+    {
+      "id": "4c22ef7d-218d-4172-b82d-7147e226d7be",
+      "address": "magdalena",
+      "schedule": "diurno",
+      "frecuency": "lunes-miercoles-viernes",
+      "hours": "03H00-11H00"
+    },
+    {
+      "id": "28d37827-fe0d-4987-8e16-beb1d7e184d0",
+      "address": "caupicho",
+      "schedule": "nocturno",
+      "frecuency": "martes-jueves-sabado",
+      "hours": "19H00-03H00"
+    },
+    {
+      "id": "02ef6f9d-8a31-4467-838d-a860a748fb49",
+      "address": "labrador",
+      "schedule": "nocturno",
+      "frecuency": "martes-jueves-sabado",
+      "hours": "19H00-03H00"
+    },
+    {
+      "id": "a030af24-85a7-4b1c-8a53-ba64fde77d87",
+      "address": "carapungo",
+      "schedule": "nocturno",
+      "frecuency": "lunes-miercoles-viernes",
+      "hours": "19H00-03H00"
+    }
+  ]
 }

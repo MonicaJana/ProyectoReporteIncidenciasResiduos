@@ -7,9 +7,9 @@ const router = Router()
 
 router.get('/claims',verifyToken, getClaim)
 router.get('/claims/:id', verifyToken,getClaimByIdController)
-router.post('/claims',createClaim)
+router.post('/claims',verifyToken, createClaim)
 router.put('/claims',verifyToken,updateClaimController)
-router.delete('/claims/:id',deleteClaimController)
+router.delete('/claims/:id',verifyToken,deleteClaimController)
 
 
 

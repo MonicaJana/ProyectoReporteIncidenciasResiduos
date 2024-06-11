@@ -6,7 +6,7 @@ import fileUpload from 'express-fileupload'
 
 import reclamosRoute from './routes/reclamos_routes.js'
 import usuariosRoute from './routes/users_routes.js'
-
+import schedulesRoute from './routes/schedules_routes.js'
 dotenv.config()
 
 //inicializaciones
@@ -33,8 +33,7 @@ app.get('/', (req,res) => res.send("Server on"))
 
 
 app.use('/api/v1',reclamosRoute)
-
-
 app.use('/api/v1',usuariosRoute)
+app.use('/api/v1',schedulesRoute)
 
 export default app 
