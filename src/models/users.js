@@ -1,10 +1,11 @@
 import bcrypt from "bcrypt"
 import { createToken } from "../middlewares/auth.js";
+const portBdd = process.env.PORT || 4000;
 
 const userModel = {
 
     async registerUserModel(newUser) {
-        const url = "http://localhost:4000/users"
+        const url = `http://localhost:${portBdd}/users`
         const peticion = await fetch(url, {
             method: "POST",
             body: JSON.stringify(newUser),
@@ -16,7 +17,7 @@ const userModel = {
 
     async loginUserModel(userName, password) {
         //punto 1
-        const url = "http://localhost:4000/users"
+        const url = `http://localhost:${portBdd}/users`
         const response = await fetch(url)
         const users = await response.json()
         const user = users.find(user => user.username === userName)
