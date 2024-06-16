@@ -1,11 +1,10 @@
 import { createClaim } from "../controllers/reclamo_controller.js"
-const portBdd = process.env.PORT || 4000;
 const reclamosModel = {
 
     //Obtener todos los reclamos
     async getAllclaims (){
 
-        const peticion = await fetch (`http://localhost:${portBdd}/Reclamos`)
+        const peticion = await fetch (`http://localhost:4000/Reclamos`)
         const claim = await peticion.json()
 
         return claim
@@ -15,7 +14,7 @@ const reclamosModel = {
     //Crear un reclamo 
     async createClaimModel (newClaim){
 
-        const url = `http://localhost:${portBdd}/Reclamos`
+        const url = `http://localhost:4000/Reclamos`
         const peticion = await fetch (url,{
             method: "POST",
             body: JSON.stringify(newClaim),
@@ -29,7 +28,7 @@ const reclamosModel = {
     //Obtener un reclamo especifico
     async getClaimByIdModel (claimId){
 
-        const response = await fetch(`http://localhost:${portBdd}/Reclamos/${claimId}`)
+        const response = await fetch(`http://localhost:4000/Reclamos/${claimId}`)
         if (!response.ok){
             return {error: "Claim no encontrado"}
         }
@@ -40,7 +39,7 @@ const reclamosModel = {
     //Actualizar un reclamo
     async updateClaimModel (claimId,dataClaim){
 
-        const url = `http://localhost:${portBdd}/Reclamos/${claimId}`
+        const url = `http://localhost:4000/Reclamos/${claimId}`
         const response = await fetch(url)
         if(!response.ok){
             return {error:"Claim no encontrado"}
@@ -59,7 +58,7 @@ const reclamosModel = {
 
     //Eliminar un reclamo
     async deleteClaimModel(claimId){
-        const url = `http://localhost:${portBdd}/Reclamos/${claimId}`
+        const url = `http://localhost:4000/Reclamos/${claimId}`
         const response = await fetch(url)
         if(!response.ok){
             return {error:"Claim no encontrado"}
