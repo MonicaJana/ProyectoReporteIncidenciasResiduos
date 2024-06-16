@@ -7,9 +7,10 @@
   },
   "type": "module",
   "scripts": {
+    "start": "npm-run-all --parallel start-server bdd",
     "dev": "node --watch ./src/index.js",
     "bdd": "json-server --watch base.json --port=4000",
-    "start": "node src/index.js"
+    "start-server": "node src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -25,5 +26,8 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }

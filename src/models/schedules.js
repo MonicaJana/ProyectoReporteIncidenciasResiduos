@@ -27,7 +27,7 @@ const schedulesModels ={
     async getScheduleByAdress(address){
 
         const response = await fetch(`http://localhost:4000/schedules`)
-        
+        console.log(response);
         if(!response.ok){
             return{ error:"Zona no encontrada"}
         }
