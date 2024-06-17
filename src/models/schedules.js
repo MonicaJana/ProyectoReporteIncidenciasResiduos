@@ -1,7 +1,7 @@
 const schedulesModels ={
 
     async getAllSchedules (){
-        const url = 'http://localhost:4000/schedules'
+        const url = `http://localhost:4000/schedules`
         const peticion = await fetch(url)
         const schedules = await peticion.json()
 
@@ -10,7 +10,7 @@ const schedulesModels ={
 
     async createSchedule(newSchedule){
 
-        const url = 'http://localhost:4000/schedules'
+        const url = `http://localhost:4000/schedules`
 
         const peticion= await fetch(url,{
             method:"POST",
@@ -25,7 +25,7 @@ const schedulesModels ={
     async getScheduleByAdress(address){
 
         const response = await fetch(`http://localhost:4000/schedules`)
-        
+        console.log(response);
         if(!response.ok){
             return{ error:"Zona no encontrada"}
         }

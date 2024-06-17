@@ -4,7 +4,7 @@ import { createToken } from "../middlewares/auth.js";
 const userModel = {
 
     async registerUserModel(newUser) {
-        const url = "http://localhost:4000/users"
+        const url = `http://localhost:4000/users`
         const peticion = await fetch(url, {
             method: "POST",
             body: JSON.stringify(newUser),
@@ -16,7 +16,7 @@ const userModel = {
 
     async loginUserModel(userName, password) {
         //punto 1
-        const url = "http://localhost:4000/users"
+        const url = `http://localhost:4000/users`
         const response = await fetch(url)
         const users = await response.json()
         const user = users.find(user => user.username === userName)
