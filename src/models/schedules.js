@@ -1,5 +1,3 @@
-import bcrypt from "bcrypt"
-
 const schedulesModels ={
 
     async getAllSchedules (){
@@ -32,7 +30,6 @@ const schedulesModels ={
             return{ error:"Zona no encontrada"}
         }
         const data= await response.json()
-         // Filtrar los datos para encontrar el que coincida con la dirección
         const schedule = data.find(item => item.address === address.toLowerCase());
 
          if (!schedule) {

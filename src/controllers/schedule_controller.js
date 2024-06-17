@@ -15,23 +15,29 @@ const getAllSchedules = async (req, res) => {
 
 }
 
-const createSchedule = async(req,res)=>{
+const createSchedule = async (req, res) => {
+    const { address, schedule, frecuency, hours } = req.body;
 
-    const newScheduleData={
+    if (!address || !schedule || !frecuency || !hours) {
+        return res.status(400).json({ error: 'Todos los campos son obligatorios' });
+    }
+
+    const newScheduleData = {
         id: uuiv4(),
-        ...req.body
-    }
+        address,
+        schedule,
+        frecuency,
+        hours
+    };
+
     try {
-
-        const schedule = await schedulesModels.createSchedule(newScheduleData)
-
-        res.status(201).json(schedule)
-        
+        const schedule = await schedulesModels.createSchedule(newScheduleData);
+        res.status(201).json(schedule);
     } catch (error) {
-        res.status(500).json(error)
-        
+        console.error('Error al crear el horario:', error);
+        res.status(500).json({ error: 'Error al crear el horario' });
     }
-}
+};
 
 const getScheduleByAdressController = async (req,res)=>{
     try {

@@ -4,27 +4,38 @@ import { v4 as uuidv4 } from "uuid";
 import { createToken } from "../middlewares/auth.js";
 
 const registerUserController = async (req, res) => {
-    //punto 1
-    //desestructuración y operador rest
-    const { password, names, address, email, username } = req.body
-    const hashedpassword = await bcrypt.hash(password, 10)
+    const { password, names, address, email, username } = req.body;
 
     if (!password || !names || !address || !email || !username) {
         return res.status(400).json({ error: 'Todos los campos son obligatorios' });
     }
 
-    const userData = {
-        id: uuidv4(),
-        username,
-        password: hashedpassword,
-        names,
-        address,
-        email
+    try {
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const lowercaseNames = names.toLowerCase();
+        const lowercaseAddress = address.toLowerCase();
+        const lowercaseEmail = email.toLowerCase();
+
+        const userData = {
+            id: uuidv4(),
+            username,
+            password: hashedPassword,
+            names: lowercaseNames,
+            address: lowercaseAddress,
+            email: lowercaseEmail
+        };
+
+        const user = await userModel.registerUserModel(userData);
+
+        res.status(201).json(user);
+    } catch (error) {
+        console.error('Error en el registro de usuario:', error);
+        res.status(500).json({ error: 'Error en el registro de usuario' });
     }
-    const user = await userModel.registerUserModel(userData)
-    //punto 3
-    res.status(201).json(user)
-}
+};
+
+export default registerUserController;
 
 const loginUserController = async (req, res) => {
     //punto 1

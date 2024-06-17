@@ -4,8 +4,8 @@ import cloudinary from 'cloudinary'
 import dotenv from 'dotenv'
 import fileUpload from 'express-fileupload'
 
-import reclamosRoute from './routes/reclamos_routes.js'
-import usuariosRoute from './routes/users_routes.js'
+import claimsRoute from './routes/claims_routes.js'
+import usersRoute from './routes/users_routes.js'
 import schedulesRoute from './routes/schedules_routes.js'
 dotenv.config()
 
@@ -32,8 +32,8 @@ app.use(express.json())
 app.get('/', (req,res) => res.send("Server on"))
 
 
-app.use('/api/v1',reclamosRoute)
-app.use('/api/v1',usuariosRoute)
-app.use('/api/v1',schedulesRoute)
+app.use('/residuos',claimsRoute)
+app.use('/residuos',usersRoute)
+app.use('/residuos',schedulesRoute)
 
 export default app 

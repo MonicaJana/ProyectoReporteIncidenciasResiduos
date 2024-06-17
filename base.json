@@ -1,134 +1,30 @@
 {
   "users": [
     {
-      "id": "5f61da97-2c79-47b7-9124-dd06b3eb5d17",
-      "password": "$2b$10$qDYzPfQDa1.YsnZWUN2LyurAXZ0.Ik8q04PCUX3JUm3Dz.dMBHIxa",
-      "name": "Dilan"
-    },
-    {
-      "id": "c361e1e7-f8bd-48bd-9d41-7074eafee67f",
-      "password": "$2b$10$baz/XR3zVaaj9jtO4m2WJOhukj7rznYUvl6s5CW8d1OzV.ZmrL7Be"
-    },
-    {
-      "id": "d2276104-eb71-48fb-a296-677f8a6bcd10",
-      "username": "Dilan2",
-      "password": "$2b$10$9oKd/imi61v1.Xn1FjhxRu6wrRbECe9h4Az5.TLIpDqpiOcNAy66K"
-    },
-    {
-      "id": "e50d0605-d2f8-410a-a684-424af54ad6ff",
-      "password": "$2b$10$dvjiHvhVYzHsbWiIWIMJjOnCmLdUvv3Jn9TA5KhkApP8x.8/DBMh6"
-    },
-    {
-      "id": "4b78557c-8920-4c3c-b337-81eeb42a08ce",
-      "username": "estilius",
-      "password": "$2b$10$hRc3Yecm25kN5AliKwI/zOOTYJZjzWC2EybqGxw9BGjvxZfcPcjf6",
-      "nombre": "Dilan",
-      "direccion": "xd",
-      "correo": "xd@"
-    },
-    {
-      "id": "a974cd15-2ec6-4404-8f64-71012ed59c36",
-      "username": "estilius",
-      "password": "$2b$10$8c1vVPoUyC3uXLwazM53PuGvQ2t2yj.WuWevOGBGqCYyD5joU/T7m",
-      "nombre": "Dilan",
-      "direccion": "sd",
-      "correo": "ds"
-    },
-    {
-      "id": "99b17041-3b6f-43e0-889a-92e7c998b82f",
-      "username": "dilan",
-      "password": "$2b$10$ybj5VmZvuLTEYdtYF8oc0uScx05a/3hiwR1Vum3fPfgX1AFq86CnG",
-      "nombre": "dd",
-      "direccion": "dd",
-      "correo": "dd"
-    },
-    {
-      "id": "492e55f2-28f9-4609-883e-23931cb5e9cc",
-      "username": "myjana",
-      "password": "$2b$10$W4yzQMDrlpJm4GAOrA2aIe2fqTFR08IbCfxKMmwcuWShwxhnzbnWG",
-      "names": "Monica Jaña",
-      "address": "caupicho",
-      "email": "monica.jana@epn.edu.ec"
+      "id": "5641f6c0-7749-488b-9da5-475803e1ea54",
+      "username": "frevill",
+      "password": "$2b$10$NwdDrrdpvgWMcGZkTtXTvOu.EWJhJdDUnO8vaTaEyggsc1vzG4hiy",
+      "names": "freddy antonio",
+      "address": "real audiencia",
+      "email": "freddy.villavicencio@gmail.com"
     }
   ],
-  "Reclamos": [
+  "claims": [
     {
-      "id": "b741cca6-ea56-47c1-8f2f-0b6d8b282cd4",
-      "Direccion": "Real Audiencia",
-      "Imagen": "Basura",
-      "Descripcion": "El acumulamiento de basura esta provocando malos olores lo cual no les gusta a los moradores que residen en ese sector solicitan una rapida solución",
-      "Fecha": "27/05/2024"
-    },
-    {
-      "id": "eabe29db-e90d-4a6c-a333-7e2b4bb67a94",
-      "Direccion": "Guamani",
-      "Imagen": "Basura",
-      "Descripcion": "El camion de la basura solo para una vez por semana lo cual ocasiona que se acumule la basura y generen malos olores",
-      "Fecha": "18/08/2024"
+      "id": "41e545a9-f2dd-4299-9a87-3632d25eaa28",
+      "Direccion": "Carapungo",
+      "Descripcion": "No llego el camion ",
+      "Fecha": "17/02/2024",
+      "Images": "https://res.cloudinary.com/dhdvbxzdz/image/upload/v1718596445/Claims/m1pqgryg3j2wh7wmmurg.jpg",
+      "public_id": "Claims/m1pqgryg3j2wh7wmmurg"
     }
   ],
   "schedules": [
     {
-      "id": "b46c1576-e0ba-46d7-8afc-46678e17a05e",
-      "address": "ofelia",
+      "id": "38c2ed1a-e47e-4cf7-a28c-f02cf5980d80",
+      "address": "Real Audiencia",
       "schedule": "nocturno",
       "frecuency": "martes-jueves-sabado",
-      "hours": "19H00-03H00"
-    },
-    {
-      "id": "b04af33b-2b5b-4515-97f3-435e123312fd",
-      "address": "la gasca",
-      "schedule": "nocturno",
-      "frecuency": "lunes-miercoles-viernes",
-      "hours": "19H00-03H00"
-    },
-    {
-      "id": "70d8c25d-b88a-4c1a-bf59-03c9e434875f",
-      "address": "la tola",
-      "schedule": "nocturno",
-      "frecuency": "martes-jueves-sabado",
-      "hours": "19H00-03H00"
-    },
-    {
-      "id": "67ffa50a-eb4e-4d08-b1f5-fa23affe3609",
-      "address": "mercado mayorista",
-      "schedule": "diurno",
-      "frecuency": "martes-jueves-sabado",
-      "hours": "03H00-11H00"
-    },
-    {
-      "id": "f193624e-83dd-43ad-9b24-01c524f59666",
-      "address": "villaflora",
-      "schedule": "diurno",
-      "frecuency": "martes-jueves-sabado",
-      "hours": "03H00-11H00"
-    },
-    {
-      "id": "4c22ef7d-218d-4172-b82d-7147e226d7be",
-      "address": "magdalena",
-      "schedule": "diurno",
-      "frecuency": "lunes-miercoles-viernes",
-      "hours": "03H00-11H00"
-    },
-    {
-      "id": "28d37827-fe0d-4987-8e16-beb1d7e184d0",
-      "address": "caupicho",
-      "schedule": "nocturno",
-      "frecuency": "martes-jueves-sabado",
-      "hours": "19H00-03H00"
-    },
-    {
-      "id": "02ef6f9d-8a31-4467-838d-a860a748fb49",
-      "address": "labrador",
-      "schedule": "nocturno",
-      "frecuency": "martes-jueves-sabado",
-      "hours": "19H00-03H00"
-    },
-    {
-      "id": "a030af24-85a7-4b1c-8a53-ba64fde77d87",
-      "address": "carapungo",
-      "schedule": "nocturno",
-      "frecuency": "lunes-miercoles-viernes",
       "hours": "19H00-03H00"
     }
   ]
