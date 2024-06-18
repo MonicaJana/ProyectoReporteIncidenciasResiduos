@@ -5,7 +5,7 @@ import {verifyToken}  from "../middlewares/auth.js"
 const router = Router()
 
 router.get('/schedules', getAllSchedules)
-router.get('/schedules/:address', getScheduleByAdressController)
+router.get('/schedules/:id', getScheduleByAdressController)
 router.post('/schedules',verifyToken,createSchedule)
 router.put('/schedules/:id',verifyToken, updateScheduleController)
 router.delete('/schedules/:id',verifyToken, deleteScheduleController)

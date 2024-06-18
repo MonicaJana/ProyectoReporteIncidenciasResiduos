@@ -1,108 +1,123 @@
-import claimsModel from "../models/claims.js";
-import {v4 as uuiv4} from 'uuid'
-import {v2 as cloudinary } from 'cloudinary'
-import fs from "fs-extra"
+import Claim from '../models/claims.js'; // Ajusta la ruta según la ubicación de tu modelo de reclamo
+import { v4 as uuidv4 } from 'uuid';
+import { v2 as cloudinary } from 'cloudinary';
+import fs from 'fs-extra';
 
-
-const getClaim = async (req,res) => {
-
-    try{
-        const obtener = await claimsModel.getAllclaims()
-        res.status(200).json(obtener)
-    } catch (error){
-        console.log(error);
+const getClaims = async (req, res) => {
+    try {
+        const claims = await Claim.find();
+        res.status(200).json(claims);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al obtener reclamos' });
     }
-}
+};
 
 const createClaim = async (req, res) => {
-
-
-    const newClaimData = {
-        id: uuiv4(),
-        ...req.body
-    }
-    try{
-
-        const cloudinaryResponse = await cloudinary.uploader.upload(req.files.Images.tempFilePath,{folder:'Claims'})
-
-        newClaimData.Images = cloudinaryResponse.secure_url
-
-        newClaimData.public_id = cloudinaryResponse.public_id
-
-        const creacion = await claimsModel.createClaimModel(newClaimData)
-        await fs.unlink(req.files.Images.tempFilePath)
-        res.status(201).json(creacion)
-
-    } catch(error){
-        res.status(500).json.error
-    }
-    
-} 
-
-const getClaimByIdController = async (req,res) =>{
-
-    try {
-    
-        const {id} = req.params
-
-        const tour = await claimsModel.getClaimByIdModel(id)
-        const status = tour.error ? 404 : 200
-    
-        res.status(status).json(tour)
-    } catch (error) {
-        res.status(500).json(error)
-    }
-
-}
-
-const updateClaimController = async (req,res) =>{
+    const { direccion, descripcion } = req.body;
 
     const newClaimData = {
-        id: uuiv4(),
-        ...req.body
-    }
-    
-    try {
-
-        const cloudinaryResponse = await cloudinary.uploader.upload(req.files.Images.tempFilePath,{folder:'Claims'})
-
-        newClaimData.Images = cloudinaryResponse.secure_url
-
-        newClaimData.public_id = cloudinaryResponse.public_id
-
-        const {id} = req.params
-        const claim = await claimsModel.updateClaimModel(id,newClaimData)
-        await fs.unlink(req.files.Images.tempFilePath)
-
-        const status = claim.error ? 404 : 200
-        res.status(status).json(claim)
-    } catch (error) {
-        res.status(500).json.error
-    }
-}
-
-const deleteClaimController = async (req,res) =>{
+        direccion,
+        descripcion,
+        fecha: new Date(), 
+    };
 
     try {
+        const cloudinaryResponse = await cloudinary.uploader.upload(req.files.imagen.tempFilePath, { folder: 'Claims' });
 
-        const {id} = req.params
-        
-        const tourFind = await claimsModel.getClaimByIdModel(id)
-        await cloudinary.uploader.destroy(tourFind.public_id)
+        newClaimData.imagen = cloudinaryResponse.secure_url;
+        newClaimData.public_id = cloudinaryResponse.public_id;
 
-        const tour = await claimsModel.deleteClaimModel(id)
-        const status = tour.error ? 404 : 200
-        res.status(status).json(tour)
+        const claim = new Claim(newClaimData);
+        await claim.save();
+
+        await fs.unlink(req.files.imagen.tempFilePath);
+
+        res.status(201).json(claim);
     } catch (error) {
-        res.status(500).json(error)
+        console.error(error);
+        res.status(500).json({ error: 'Error al crear reclamo' });
     }
+};
 
-}
+const getClaimById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const claim = await Claim.findById(id);
+
+        if (!claim) {
+            return res.status(404).json({ error: 'Claim no encontrado' });
+        }
+
+        res.status(200).json(claim);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al obtener reclamo por ID' });
+    }
+};
+
+const updateClaimById = async (req, res) => {
+    const { direccion, descripcion } = req.body;
+    const { id } = req.params;
+
+    const updatedClaimData = {
+        direccion,
+        descripcion,
+    };
+
+    try {
+        if (req.files && req.files.imagen) {
+            const cloudinaryResponse = await cloudinary.uploader.upload(req.files.imagen.tempFilePath, { folder: 'Claims' });
+            updatedClaimData.imagen = cloudinaryResponse.secure_url;
+            await fs.unlink(req.files.imagen.tempFilePath);
+        }
+
+        const claim = await Claim.findByIdAndUpdate(id, updatedClaimData, { new: true });
+
+        if (!claim) {
+            return res.status(404).json({ error: 'Claim no encontrado' });
+        }
+
+        res.status(200).json(claim);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al actualizar reclamo' });
+    }
+};
+
+const deleteClaimById = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        // Buscar el reclamo por el ID para obtener el public_id
+        const claim = await Claim.findById(id);
+
+        if (!claim) {
+            return res.status(404).json({ error: 'Reclamo no encontrado' });
+        }
+
+        // Verificar si existe public_id en el reclamo
+        if (!claim.public_id) {
+            return res.status(400).json({ error: 'Missing required parameter - public_id' });
+        }
+
+        // Eliminar la imagen de Cloudinary utilizando el public_id
+        await cloudinary.uploader.destroy(claim.public_id);
+
+        // Eliminar el reclamo de la base de datos
+        await Claim.findByIdAndDelete(id);
+
+        res.json({ message: 'Reclamo eliminado correctamente' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al eliminar el reclamo' });
+    }
+};
 
 export {
-    getClaim,
+    getClaims,
     createClaim,
-    getClaimByIdController,
-    updateClaimController,
-    deleteClaimController
-}
+    getClaimById,
+    updateClaimById,
+    deleteClaimById
+};
